@@ -350,6 +350,7 @@ export default class Form<
       props.idPrefix,
       props.idSeparator
     );
+
     const nextState: FormState<T, S, F> = {
       schemaUtils,
       schema,
@@ -767,6 +768,7 @@ export default class Form<
       _internalFormWrapper,
     } = this.props;
 
+    console.log('hello', disabled);
     const { schema, uiSchema, formData, errorSchema, idSchema } = this.state;
     const registry = this.getRegistry();
     const { SchemaField: _SchemaField } = registry.fields;
@@ -811,7 +813,7 @@ export default class Form<
           disabled={disabled}
           readonly={readonly}
         />
-        {children ? children : <SubmitButton uiSchema={uiSchema} registry={registry} />}
+        {children ? children : <SubmitButton uiSchema={uiSchema} registry={registry} disabled={disabled} />}
         {showErrorList === 'bottom' && this.renderErrors(registry)}
       </FormTag>
     );

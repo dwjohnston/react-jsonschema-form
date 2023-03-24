@@ -6,14 +6,20 @@ export default function SubmitButton<
   T = any,
   S extends StrictRJSFSchema = RJSFSchema,
   F extends FormContextType = any
->({ uiSchema }: SubmitButtonProps<T, S, F>) {
+>({ uiSchema, disabled }: SubmitButtonProps<T, S, F>) {
   const { submitText, norender, props: submitButtonProps = {} } = getSubmitButtonOptions<T, S, F>(uiSchema);
   if (norender) {
     return null;
   }
+
   return (
     <div>
-      <button type='submit' {...submitButtonProps} className={`btn btn-info ${submitButtonProps.className}`}>
+      <button
+        type='submit'
+        {...submitButtonProps}
+        disabled={disabled || submitButtonProps.disabled}
+        className={`btn btn-info ${submitButtonProps.className}`}
+      >
         {submitText}
       </button>
     </div>

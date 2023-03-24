@@ -17,7 +17,7 @@ const liveSettingsSchema = {
   type: 'object',
   properties: {
     liveValidate: { type: 'boolean', title: 'Live validation' },
-    disable: { type: 'boolean', title: 'Disable whole form' },
+    disabled: { type: 'boolean', title: 'Disable whole form' },
     readonly: { type: 'boolean', title: 'Readonly whole form' },
     omitExtraData: { type: 'boolean', title: 'Omit extra data' },
     liveOmit: { type: 'boolean', title: 'Live omit' },
@@ -480,6 +480,8 @@ class Playground extends Component {
 
     return (
       <div className='container-fluid'>
+
+        {JSON.stringify(liveSettings)}
         <div className='page-header'>
           <h1>react-jsonschema-form</h1>
           <div className='row'>
